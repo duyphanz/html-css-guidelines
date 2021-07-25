@@ -117,4 +117,36 @@ Indent entire related rulesets to signal their relation to one another. we stick
 }
 ```
 
+### 5. Meaningful Whitespace
+
+- One (1) empty line between closely related rulesets.
+- Two (2) empty lines between loosely related rulesets.
+- Five (5) empty lines between entirely new sections.
+
+```
+/*------------------------------------*\
+  #FOO
+\*------------------------------------*/
+
+.foo { }
+
+  .foo__bar { }
+
+
+.foo--baz { }
+
+
+
+
+
+/*------------------------------------*\
+  #BAR
+\*------------------------------------*/
+
+.bar { }
+
+  .bar__baz { }
+
+  .bar__foo { }
+```
 
