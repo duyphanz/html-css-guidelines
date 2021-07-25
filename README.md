@@ -80,5 +80,41 @@ The title of the section is prefixed with a hash (#) symbol to allow us to perfo
 .another-selector { }
 ```
 
+### 3. Ruleset
+
+- related selectors on the same line; unrelated selectors on new lines;
+- a space before our opening brace ({);
+- the opening brace ({) on the same line as our last selector;
+- our first declaration on a new line after our opening brace ({);
+- properties and values on the same line;
+- a space after our property–value delimiting colon (:);
+- each declaration on its own new line;
+- our closing brace (}) on its own new line;
+- each declaration indented by two (2) spaces;
+- a trailing semi-colon (;) on our last declaration.
+
+```
+.foo, .foo--bar,
+.baz {
+  display: block;
+  background-color: green;
+  color: red;
+}
+```
+
+### 4. Indenting
+
+Indent entire related rulesets to signal their relation to one another. we stick to the same two (2) spaces, and we also leave a blank line before and after the nested ruleset.
+
+```
+.foo {
+  color: red;
+
+  .bar {
+    color: blue;
+  }
+
+}
+```
 
 
