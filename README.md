@@ -123,7 +123,7 @@ Indent entire related rulesets to signal their relation to one another. we stick
 - Two (2) empty lines between loosely related rulesets.
 - Five (5) empty lines between entirely new sections.
 
-**CSS**
+- **CSS**
 ```
 /*------------------------------------*\
   #FOO
@@ -151,7 +151,7 @@ Indent entire related rulesets to signal their relation to one another. we stick
   .bar__foo { }
 ```
 
-**HTML**
+- **HTML**
 ```
 <header class="page-head">
 
@@ -205,3 +205,60 @@ CSS absolute or relative units?
 As a rule, you should comment anything that isn’t immediately obvious from the code alone. That is to say, there is no need to tell someone that color: red; will make something red, but if you’re using overflow: hidden; to clear floats—as opposed to clipping an element’s overflow—this is probably something worth documenting.
 
 ### 8. Namming
+
+Naming conventions in CSS are hugely useful in making your code more strict, more transparent, and more informative. 
+The naming convention: hyphen (-) delimited strings, with BEM-like naming for more complex pieces of code.
+
+- **Hyphen Delimited and All Lowercase**
+
+All strings in classes are lowercase and delimited with a hyphen (-), like so:
+
+```
+.page-head { }
+
+.sub-content { }
+```
+
+- **BEM-like Naming**
+
+// TODO
+
+### 9. CSS selectors
+
+- **Selector Intent**
+
+It is important when writing CSS that we scope our selectors correctly, and that we’re selecting the right things for the right reasons.`Selector Intent` is the process of deciding and defining what you want to style and how you will go about selecting it.
+
+For example, style the website’s main navigation menu:
+
+```
+// Bad
+
+header ul { }
+```
+This selector’s intent is to style `any ul` inside `any header` element, whereas our intent was to style `the site’s main navigation`.
+```
+// Better
+
+.site-nav { }
+```
+
+- **Reusability - Location Independence**
+
+Given the ever-changing nature of most UI projects, and the move to more component-based architectures, it is in our interests not to style things based on `where` they are, but on `what` they are. 
+
+For example, a call-to-action button has the following selector:
+
+```
+// Bad
+
+.promo a { }
+```
+Not only does this have poor Selector Intent—it will greedily style any and every link inside of a `.promo` to look like a button—it is also pretty wasteful as a result of being so locationally dependent: we can’t reuse that button with its correct styling outside of .promo because it is explicitly tied to that location.
+
+```
+// Better 
+
+.btn { }
+```
+This single class can be reused anywhere outside of .promo and will always carry its correct styling. As a result of a better selector, this piece of UI is more portable, more recyclable, doesn’t have any dependencies, and has much better Selector Intent.
