@@ -220,12 +220,12 @@ All strings in classes are lowercase and delimited with a hyphen (-), like so:
 ```
 
 - **BEM-like Naming**
-
+```
 // TODO
-
+```
 ### 9. CSS selectors
 
-- **Selector Intent**
+#### - **Selector Intent**
 
 It is important when writing CSS that we scope our selectors correctly, and that we’re selecting the right things for the right reasons.`Selector Intent` is the process of deciding and defining what you want to style and how you will go about selecting it.
 
@@ -243,7 +243,7 @@ This selector’s intent is to style `any ul` inside `any header` element, where
 .site-nav { }
 ```
 
-- **Reusability - Location Independence**
+#### - **Reusability - Location Independence**
 
 Given the ever-changing nature of most UI projects, and the move to more component-based architectures, it is in our interests not to style things based on `where` they are, but on `what` they are. 
 
@@ -263,7 +263,7 @@ Not only does this have poor Selector Intent—it will greedily style any and ev
 ```
 This single class can be reused anywhere outside of .promo and will always carry its correct styling. As a result of a better selector, this piece of UI is more portable, more recyclable, doesn’t have any dependencies, and has much better Selector Intent.
 
-- **Selector Performance**
+#### - **Selector Performance**
 
 That is to say, how quickly a browser can match the selectors your write in CSS up with the nodes it finds in the DOM. Generally speaking, the longer a selector is (i.e. the more component parts) the slower it is, for example:
 
@@ -278,18 +278,46 @@ body.home div.header ul { }
 
 This is because browsers read CSS selectors `right-to-left`. A browser will read the first selector as
 
-- find `all ul` elements in the DOM;
-- now check if they live anywhere inside an element with a class of `.header`;
-- next check that `.header` class exists on a `div` element;
-- now check that all lives anywhere inside any elements with a class of `.home`;
-- finally, check that `.home` exists on a `body` element.
+  - find `all ul` elements in the DOM;
+  - now check if they live anywhere inside an element with a class of `.header`;
+  - next check that `.header` class exists on a `div` element;
+  - now check that all lives anywhere inside any elements with a class of `.home`;
+  - finally, check that `.home` exists on a `body` element.
 
 The second, in contrast, is simply a case of the browser reading
 
-- find all the elements with a class of `.primary-nav`.
+  - find all the elements with a class of `.primary-nav`.
 
 To further compound the problem, we are using descendant selectors (e.g. `.foo .bar {}`). The upshot of this is that a browser is required to start with the rightmost part of the selector (i.e. .bar) and keep looking up the DOM indefinitely until it finds the next part (i.e. `.foo`). This could mean stepping up the DOM dozens of times until a match is found.
 
 This is just one reason why nesting with preprocessors is often a `false economy`; as well as making selectors unnecessarily more specific, and creating location dependency, it also creates more work for the browser.
 
 By using a child selector (e.g. `.foo > .bar {}`) we can make the process much more efficient, because this only requires the browser to look one level higher in the DOM, and it will stop regardless of whether or not it found a match.
+
+#### - **Specificity**
+
+No matter how well considered your naming, regardless of how perfect your source order and cascade are managed, and how well you’ve scoped your rulesets, just one overly-specific selector can undo everything. It is a gigantic curveball, and undermines CSS’ very nature of the cascade, inheritance, and source order.
+
+The problem with specificity is that it sets precedents and trumps that cannot simply be undone.
+```
+#content table { }
+```
+For example: 
+
+```
+#content table { }
+
+/**
+ * Uh oh! My styles get overwritten by `#content table {}`.
+ */
+.my-new-table { }
+```
+
+The first selector was trumping the specificity of the one defined after it, working against CSS’ source-order based application of styles. In order to remedy this, we had two main options
+
+  - refactor my CSS and HTML to remove that ID;
+  - write a more specific selector to override it.
+
+So, keep it low at all times (not using IDs in your CSS / not nesting selectors / not qualifying classes / not chaining selectors.)
+
+
