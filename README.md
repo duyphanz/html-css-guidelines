@@ -262,3 +262,34 @@ Not only does this have poor Selector Intent—it will greedily style any and ev
 .btn { }
 ```
 This single class can be reused anywhere outside of .promo and will always carry its correct styling. As a result of a better selector, this piece of UI is more portable, more recyclable, doesn’t have any dependencies, and has much better Selector Intent.
+
+- **Selector Performance**
+
+That is to say, how quickly a browser can match the selectors your write in CSS up with the nodes it finds in the DOM. Generally speaking, the longer a selector is (i.e. the more component parts) the slower it is, for example:
+
+```
+body.home div.header ul { }
+```
+…is a far less efficient selector than:
+
+```
+.primary-nav { }
+```
+
+This is because browsers read CSS selectors `right-to-left`. A browser will read the first selector as
+
+- find `all ul` elements in the DOM;
+- now check if they live anywhere inside an element with a class of `.header`;
+- next check that `.header` class exists on a `div` element;
+- now check that all lives anywhere inside any elements with a class of `.home`;
+- finally, check that `.home` exists on a `body` element.
+
+The second, in contrast, is simply a case of the browser reading
+
+- find all the elements with a class of `.primary-nav`.
+
+To further compound the problem, we are using descendant selectors (e.g. `.foo .bar {}`). The upshot of this is that a browser is required to start with the rightmost part of the selector (i.e. .bar) and keep looking up the DOM indefinitely until it finds the next part (i.e. `.foo`). This could mean stepping up the DOM dozens of times until a match is found.
+
+This is just one reason why nesting with preprocessors is often a `false economy`; as well as making selectors unnecessarily more specific, and creating location dependency, it also creates more work for the browser.
+
+By using a child selector (e.g. `.foo > .bar {}`) we can make the process much more efficient, because this only requires the browser to look one level higher in the DOM, and it will stop regardless of whether or not it found a match.
