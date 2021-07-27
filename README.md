@@ -24,7 +24,7 @@ A good styleguide, when well followed, will:
 
 I took a serious ref from https://cssguidelin.es/.
 
-## III. CSS Rules
+## III. Rules
 
 ### 1. 80 Characters Wide
 
@@ -123,6 +123,7 @@ Indent entire related rulesets to signal their relation to one another. we stick
 - Two (2) empty lines between loosely related rulesets.
 - Five (5) empty lines between entirely new sections.
 
+**CSS**
 ```
 /*------------------------------------*\
   #FOO
@@ -150,3 +151,57 @@ Indent entire related rulesets to signal their relation to one another. we stick
   .bar__foo { }
 ```
 
+**HTML**
+```
+<header class="page-head">
+
+  <ul class="primary-nav">
+
+    <li class="primary-nav__item">
+      <a href="/" class="primary-nav__link">Home</a>
+    </li>
+
+    <li class="primary-nav__item  primary-nav__trigger">
+      <a href="/about" class="primary-nav__link">About</a>
+
+      <ul class="primary-nav__sub-nav">
+        <li><a href="/about/products">Products</a></li>
+        <li><a href="/about/company">Company</a></li>
+      </ul>
+
+    </li>
+
+    <li class="primary-nav__item">
+      <a href="/contact" class="primary-nav__link">Contact</a>
+    </li>
+
+  </ul>
+  
+</header>
+
+
+
+
+
+<main class="page-content">
+  ...
+</main>
+
+
+
+
+
+<footer class="page-foot">
+  ...
+</footer>
+```
+
+### 6. CSS Units
+
+CSS absolute or relative units?
+
+### 7. Commenting
+
+As a rule, you should comment anything that isn’t immediately obvious from the code alone. That is to say, there is no need to tell someone that color: red; will make something red, but if you’re using overflow: hidden; to clear floats—as opposed to clipping an element’s overflow—this is probably something worth documenting.
+
+### 8. Namming
