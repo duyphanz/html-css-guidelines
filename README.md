@@ -80,7 +80,14 @@ The title of the section is prefixed with a hash (#) symbol to allow us to perfo
 .another-selector { }
 ```
 
-### 3. Ruleset
+### 3. CSS Ruleset
+
+```
+[selector] {
+    [property]: [value];
+    [<- Declaration ->]
+}
+```
 
 - related selectors on the same line; unrelated selectors on new lines;
 - a space before our opening brace ({);
@@ -92,13 +99,43 @@ The title of the section is prefixed with a hash (#) symbol to allow us to perfo
 - our closing brace (}) on its own new line;
 - each declaration indented by two (2) spaces;
 - a trailing semi-colon (;) on our last declaration.
+- long, comma-separated property values—such as collections of gradients or shadows—arranged across multiple new lines, making sure all values are indented at the same level as the first;
+
+###### :heavy_multiplication_x: NOT GOOD
+
+```scss
+// Not having each selector on its own line
+.selector-1, .selector-2
+// Not having the opening brace (`{`) on the same line as the last selector
+{
+    // Not having each declaration on its own line
+    background-color: $color-brand; background-image: linear-gradient($color-white, $color-grey-mercury), linear-gradient($color-black, $color-grey-alabaster);
+    // Not using new lines for the comma-separated property values and not
+    // indenting all the values at the same level as the first
+    box-shadow: 1px 1px 1px $color-black, 2px 2px 1px 1px $color-grey-mercury inset;
+    // Not using a space after the colon (`:`)
+    color:$color-text-base;
+  // Not indenting a declaration with four (4) spaces
+  display: block;
+    // Not using a trailing semi-colon (`;`) at the end of the declaration
+    // and not having the closing brace (`}`) on its own new line
+    padding: rem($spacing-base) }
 
 ```
-.foo, .foo--bar,
-.baz {
-  display: block;
-  background-color: green;
-  color: red;
+
+###### :heavy_check_mark: GOOD
+
+```scss
+.selector-1,
+.selector-2 {
+    background-color: $color-brand;
+    background-image: linear-gradient($color-white, $color-grey-mercury),
+                      linear-gradient($color-black, $color-grey-alabaster);
+    box-shadow: 1px 1px 1px $color-black,
+                2px 2px 1px 1px $color-grey-mercury inset;
+    color: $color-text-base;
+    display: block;
+    padding: rem($spacing-base);
 }
 ```
 
