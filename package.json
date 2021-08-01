@@ -7,7 +7,8 @@
   "license": "MIT",
   "scripts": {
     "lint:jsx": "stylelint 'demo/*.jsx'",
-    "lint:css": "stylelint 'demo/*.css'"
+    "lint:css": "stylelint 'demo/*.css'",
+    "lint:fix": "stylelint 'demo/*.{css,jsx}' --fix"
   },
   "devDependencies": {
     "stylelint": "^13.13.1",
