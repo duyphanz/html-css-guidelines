@@ -1,0 +1,19 @@
+{
+  "name": "html-css-guidelines",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:duyphanz/html-css-guidelines.git",
+  "author": "Duy Phan <duyphan@lecle.co.kr>",
+  "license": "MIT",
+  "scripts": {
+    "lint:jsx": "stylelint 'demo/*.jsx'",
+    "lint:css": "stylelint 'demo/*.css'"
+  },
+  "devDependencies": {
+    "stylelint": "^13.13.1",
+    "stylelint-config-standard": "^22.0.0"
+  },
+  "dependencies": {
+    "styled-components": "^5.3.0"
+  }
+}
