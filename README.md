@@ -108,19 +108,18 @@ The title of the section is prefixed with a hash (#) symbol to allow us to perfo
 .selector-1, .selector-2
 // Not having the opening brace (`{`) on the same line as the last selector
 {
-    // Not having each declaration on its own line
-    background-color: $color-brand; background-image: linear-gradient($color-white, $color-grey-mercury), linear-gradient($color-black, $color-grey-alabaster);
-    // Not using new lines for the comma-separated property values and not
-    // indenting all the values at the same level as the first
-    box-shadow: 1px 1px 1px $color-black, 2px 2px 1px 1px $color-grey-mercury inset;
-    // Not using a space after the colon (`:`)
-    color:$color-text-base;
-  // Not indenting a declaration with four (4) spaces
+  // Not having each declaration on its own line
+  background-color: $color-brand; background-image: linear-gradient($color-white, $color-grey-mercury), linear-gradient($color-black, $color-grey-alabaster);
+  // Not using new lines for the comma-separated property values and not
+  // indenting all the values at the same level as the first
+  box-shadow: 1px 1px 1px $color-black, 2px 2px 1px 1px $color-grey-mercury inset;
+  // Not using a space after the colon (`:`)
+  color:$color-text-base;
+  // Not indenting a declaration with four (2) spaces
   display: block;
-    // Not using a trailing semi-colon (`;`) at the end of the declaration
-    // and not having the closing brace (`}`) on its own new line
-    padding: rem($spacing-base) }
-
+  // Not using a trailing semi-colon (`;`) at the end of the declaration
+  // and not having the closing brace (`}`) on its own new line
+  padding: rem($spacing-base) }
 ```
 
 ###### :heavy_check_mark: GOOD
@@ -128,14 +127,14 @@ The title of the section is prefixed with a hash (#) symbol to allow us to perfo
 ```scss
 .selector-1,
 .selector-2 {
-    background-color: $color-brand;
-    background-image: linear-gradient($color-white, $color-grey-mercury),
-                      linear-gradient($color-black, $color-grey-alabaster);
-    box-shadow: 1px 1px 1px $color-black,
-                2px 2px 1px 1px $color-grey-mercury inset;
-    color: $color-text-base;
-    display: block;
-    padding: rem($spacing-base);
+  background-color: $color-brand;
+  background-image: linear-gradient($color-white, $color-grey-mercury),
+                    linear-gradient($color-black, $color-grey-alabaster);
+  box-shadow: 1px 1px 1px $color-black,
+              2px 2px 1px 1px $color-grey-mercury inset;
+  color: $color-text-base;
+  display: block;
+  padding: rem($spacing-base);
 }
 ```
 
