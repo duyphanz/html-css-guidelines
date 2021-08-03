@@ -6,8 +6,7 @@
   "author": "Duy Phan <duyphan@lecle.co.kr>",
   "license": "MIT",
   "scripts": {
-    "lint:jsx": "stylelint 'demo/*.jsx'",
-    "lint:css": "stylelint 'demo/*.css'",
+    "lint:css": "stylelint 'demo/*.{css,jsx}'",
     "lint:fix": "stylelint 'demo/*.{css,jsx}' --fix"
   },
   "devDependencies": {
