@@ -356,4 +356,24 @@ The first selector was trumping the specificity of the one defined after it, wor
 
 So, keep it low at all times (not using IDs in your CSS / not nesting selectors / not qualifying classes / not chaining selectors.)
 
+#### - **Recap**
+
+**Tag inheritance**
+- Use for general style as reset, normalize style. Avoid to define a specific style as global style.
+- Use in a small scope.
+
+**Location inheritance**
+- Cannot reuse existing components.
+- Use in a small scope or try to avoid this.
+
+**Class inheritance**
+- Okay if you follow OOCSS methodology. Otherwise, try to avoid.
+
+**Composition**
+- A site has buttons, dropdowns,… Treat them as components which are standalone or reusable.
+
+**Cascading**
+- Can be Used but not Abused.
+
+_More details_: https://git.baikal.io/lecle-groundwork/knowledge/-/merge_requests/40
 
